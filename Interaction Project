@@ -1,4 +1,6 @@
 var opacity
+var centerX
+var centerY
 var bg
 var bg2
 var candy
@@ -7,7 +9,8 @@ function setup() {
               opacity=255
               bg=220
               bg2=0
-                
+              centerX = 100;
+ 	centerY = 50;
 }
 
 
@@ -128,24 +131,51 @@ function keyPressed() {
               fill(255, 10, 218)
               stroke(255, 10, 218)
               beginShape()
-              vertex(270,110)
-              vertex(300,90)
-              vertex(300,140)
-              vertex(270,110)
+              vertex(240,100)
+              vertex(270,80)
+              vertex(270,120)
+              vertex(240,100)
               endShape()
               beginShape()
-              vertex(250,110)
-              vertex(200,90)
-              vertex(200,140)
-              vertex(250,100) 
+              vertex(225,100)
+              vertex(170,80)
+              vertex(170,120)
+              vertex(225,100) 
               endShape()
               rect(220,100,60,30)
               
               
 }
 function mousePressed(){
+              
+              //Happy Halloween
               background(bg2)
               fill('white')
               textSize(30)
-              text("Happy Halloween!",100,200)
+              strokeWeight(100)
+              text("Happy Halloween!",mouseX,mouseY)
+     
+             
+              
+  // ghost
+  rectMode(CENTER);
+  fill(255,255,255,100)
+  rect( centerX , centerY+100, 200, 290, 100, 100, 0, 0); 
+              
+  // cutout
+ fill(0)
+  ellipse( centerX -50, centerY+250, 100, 120); // left
+  ellipse(centerX+50, centerY+250, 100, 120); // right
+
+  // eye
+  fill(0)
+  ellipse(centerX-25, centerY+30, 20, 40); // left 
+  ellipse(centerX+25,centerY + 30, 20, 40); // right 
+              
+  //mouth
+  ellipse(centerX, centerY+100, 20, 80); 
+              
+              centerX=centerX+10
+              centerY=centerY+10
+
 }
